@@ -44,7 +44,7 @@ $('#fileup').change(function(){
             reader.onerror = reject;
           });
             
-          function Main() {
+          async function Main() {
         
           const file = document.querySelector('#fileup').files[0];
           console.log(await toBase64(file));
