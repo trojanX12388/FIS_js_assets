@@ -36,6 +36,21 @@ $('#fileup').change(function(){
           
             $( "#submitbtn" ).show();
             $( "#fakebtn" ).hide();
+            var value 
+            const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+          });
+          async function Main() {
+        
+          const file = document.querySelector('#fileup').files[0];
+          console.log(await toBase64(file));
+          value = await toBase64(file);
+          document.getElementById("base64").setAttribute('value',value);
+          }
+        Main();
         }
     });
        
