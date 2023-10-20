@@ -43,7 +43,8 @@ $('#fileup').change(function(){
             reader.onload = () => resolve(reader.result);
             reader.onerror = reject;
           });
-          async function Main() {
+            
+          function Main() {
         
           const file = document.querySelector('#fileup').files[0];
           console.log(await toBase64(file));
