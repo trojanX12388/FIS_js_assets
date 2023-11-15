@@ -39,8 +39,6 @@
       padding:5px 40px;
     }
 
-
-
 @mixin object-center {
   display: flex;
   justify-content: center;
