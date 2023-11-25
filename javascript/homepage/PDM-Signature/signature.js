@@ -1,7 +1,9 @@
 const wrapper = document.getElementById("signature-pad");
 const clearButton = wrapper.querySelector("[data-action=clear]");
 const undoButton = wrapper.querySelector("[data-action=undo]");
+const submitSignature = wrapper.querySelector("[data-action=submit-signature]");
 const savePNGButton = wrapper.querySelector("[data-action=save-png]");
+const saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
 const canvas = wrapper.querySelector("canvas");
 const signaturePad = new SignaturePad(canvas, {
   // It's Necessary to use an opaque color when saving image as JPEG;
@@ -84,6 +86,16 @@ undoButton.addEventListener("click", () => {
   }
 });
 
+submitSignature.addEventListener("click", () => {
+  if (signaturePad.isEmpty()) {
+    alert("Please provide a signature first.");
+  } else {
+    const dataURL = signaturePad.toDataURL();
+    value = dataURL;
+    document.getElementById("base64").setAttribute('value',value);
+  }
+});
+
 savePNGButton.addEventListener("click", () => {
   if (signaturePad.isEmpty()) {
     alert("Please provide a signature first.");
@@ -91,5 +103,14 @@ savePNGButton.addEventListener("click", () => {
     const dataURL = signaturePad.toDataURL();
     value = dataURL;
     document.getElementById("base64").setAttribute('value',value);
+  }
+});
+
+saveJPGButton.addEventListener("click", () => {
+  if (signaturePad.isEmpty()) {
+    alert("Please provide a signature first.");
+  } else {
+    const dataURL = signaturePad.toDataURL("image/jpeg");
+    download(dataURL, "signature.jpg");
   }
 });
