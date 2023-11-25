@@ -100,9 +100,8 @@ savePNGButton.addEventListener("click", () => {
   if (signaturePad.isEmpty()) {
     alert("Please provide a signature first.");
   } else {
-    const dataURL = signaturePad.toDataURL();
-    value = dataURL;
-    document.getElementById("base64").setAttribute('value',value);
+    const dataURL = signaturePad.toDataURL("image/png");
+    download(dataURL, "signature.png");
   }
 });
 
