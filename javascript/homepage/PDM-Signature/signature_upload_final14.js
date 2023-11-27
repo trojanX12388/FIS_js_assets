@@ -125,7 +125,6 @@ file_upload_signature.onchange = function(e) {
     case 'jpeg':
     case 'png':
       VerifyUploadSizeIsOK()
-      valid_input()
       break;
     default:
       invalid_input()
@@ -147,6 +146,7 @@ function VerifyUploadSizeIsOK()
     fld.value = '';
     invalid_input()
  }
+ valid_input()
  return true; 
 } // function VerifyUploadSizeIsOK()
 
