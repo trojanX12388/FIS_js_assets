@@ -146,7 +146,6 @@ function VerifyUploadSizeIsOK()
     fld.value = '';
     invalid_input()
  }
- valid_input()
  return true; 
 } // function VerifyUploadSizeIsOK()
 
