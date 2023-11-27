@@ -133,7 +133,7 @@ file_upload_signature.onchange = function(e) {
          {
             // alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
             fld.value = '';
-            invalid_input()
+            exceed_input()
          }
       else{
          valid_input()
@@ -148,16 +148,26 @@ file_upload_signature.onchange = function(e) {
 
 var valid = document.getElementById("is_valid");
 var invalid = document.getElementById("is_invalid");
-
+var exceed = document.getElementById("size_exceed");
 
 // SHOW VALID
 function valid_input() {
     valid.style.display = "block";
     invalid.style.display = "none";
+    exceed.style.display = "none";
 }
 
 // SHOW INVALID
 function invalid_input() {
     invalid.style.display = "block";
+    valid.style.display = "none";
+    exceed.style.display = "none";
+}
+
+
+// SHOW EXCEED
+function exceed_input() {
+    exceed.style.display = "block";
+    invalid.style.display = "none";
     valid.style.display = "none";
 }
