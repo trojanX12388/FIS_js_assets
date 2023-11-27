@@ -125,7 +125,6 @@ file_upload_signature.onchange = function(e) {
     case 'jpeg':
     case 'png':
       VerifyUploadSizeIsOK()
-      valid_input()
       break;
     default:
       invalid_input()
@@ -143,9 +142,9 @@ function VerifyUploadSizeIsOK()
  var fld = document.getElementById(UploadFieldID);
  if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
  {
-    alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
+    // alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
     fld.value = '';
-    invalid_input()
+    valid_input()
  }
  return true; 
 } // function VerifyUploadSizeIsOK()
