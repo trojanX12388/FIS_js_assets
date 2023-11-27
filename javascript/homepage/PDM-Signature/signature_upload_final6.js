@@ -152,20 +152,14 @@ function VerifyUploadSizeIsOK()
 
 // SHOW VALID
 function valid_input() {
-  var x = document.getElementById("is_valid");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+  var valid = document.getElementById("is_valid");
+    valid.style.display = "block";
+    invalid.style.display = "none";
 }
 
 // SHOW INVALID
 function invalid_input() {
-  var x = document.getElementById("is_ivalid");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+  var invalid = document.getElementById("is_ivalid");
+    invalid.style.display = "block";
+    valid.style.display = "none";
 }
