@@ -125,7 +125,7 @@ file_upload_signature.onchange = function(e) {
     case 'jpeg':
     case 'png':
       VerifyUploadSizeIsOK()
-      show_filesize()
+      valid_input()
       break;
     default:
       alert('Invalid File Type!');
@@ -151,8 +151,7 @@ function VerifyUploadSizeIsOK()
 
 
 // SHOW FILE SIZE 
-function show_filesize()
+function valid_input()
 {
- var enable = document.getElementById("file-size");
- enable.value = document.getElementById("file-upload").files.length;
-} // function VerifyUploadSizeIsOK()
+ document.getElementById("is_valid").disabled = true;
+} 
