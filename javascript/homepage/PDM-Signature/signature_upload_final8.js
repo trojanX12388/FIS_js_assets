@@ -160,7 +160,7 @@ function valid_input() {
 
 // SHOW INVALID
 function invalid_input() {
-  var invalid = document.getElementById("is_ivalid");
+  var invalid = document.getElementById("is_invalid");
     invalid.style.display = "block";
     valid.style.display = "none";
 }
