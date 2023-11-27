@@ -115,6 +115,7 @@ saveJPGButton.addEventListener("click", () => {
   }
 });
 
+// VERIFYING FILE INPUT
 var file_upload_signature = document.getElementById('file-upload');
 
 file_upload_signature.onchange = function(e) {
@@ -124,12 +125,14 @@ file_upload_signature.onchange = function(e) {
     case 'jpeg':
     case 'png':
       VerifyUploadSizeIsOK()
+      show_filesize()
       break;
     default:
       alert('Invalid File Type!');
       this.value = '';
   }
 };
+
 
 // UPLOAD SIGNATURE
 function VerifyUploadSizeIsOK()
@@ -147,3 +150,9 @@ function VerifyUploadSizeIsOK()
 } // function VerifyUploadSizeIsOK()
 
 
+// SHOW FILE SIZE 
+function show_filesize()
+{
+ var enable = document.getElementById("file-size");
+ enable.value = document.getElementById("file-upload").files.length;
+} // function VerifyUploadSizeIsOK()
