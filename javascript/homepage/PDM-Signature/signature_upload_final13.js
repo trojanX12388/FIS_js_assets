@@ -125,6 +125,7 @@ file_upload_signature.onchange = function(e) {
     case 'jpeg':
     case 'png':
       VerifyUploadSizeIsOK()
+      valid_input()
       break;
     default:
       invalid_input()
