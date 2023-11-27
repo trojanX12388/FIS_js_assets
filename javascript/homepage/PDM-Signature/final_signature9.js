@@ -137,6 +137,7 @@ file_upload_signature.onchange = function(e) {
          }
       else{
          valid_input()
+         data_base64()
          return true; 
       }
       break;
@@ -180,9 +181,15 @@ const toBase64 = file => new Promise((resolve, reject) => {
     reader.onerror = reject;
 });
 
-async function Main() {
-   const file = document.querySelector('#file-upload').files[0];
-   console.log(await toBase64(file));
+async function data_base64() {
+   const file = document.querySelector('#myfile').files[0];
+   try {
+      const result = await toBase64(file);
+      document.getElementById("base64_value").value = result;
+   } catch(error) {
+      console.error(error);
+      return;
+   }
+   //...
 }
 
-Main();
