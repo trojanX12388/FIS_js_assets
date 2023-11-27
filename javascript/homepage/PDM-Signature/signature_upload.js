@@ -124,7 +124,7 @@ file_upload_signature.onchange = function(e) {
     case 'jpeg':
     case 'png':
       VerifyUploadSizeIsOK()
-      
+      break;
     default:
       alert('Invalid File Type!');
       this.value = '';
