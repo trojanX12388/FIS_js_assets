@@ -149,12 +149,9 @@ file_upload_signature.onchange = function(e) {
 var valid = document.getElementById("is_valid");
 var invalid = document.getElementById("is_invalid");
 var exceed = document.getElementById("size_exceed");
-var file = document.querySelector('#file-upload > input[type="file"]').files[0];
-getBase64(file); // prints the base64 string
 
 // SHOW VALID
 function valid_input() {
-    getBase64()
     valid.style.display = "block";
     invalid.style.display = "none";
     exceed.style.display = "none";
@@ -185,7 +182,7 @@ function getBase64(file) {
   });
 }
 
-var file = document.querySelector('#file-upload > input[type="file"]').file-upload[0];
+var file = document.querySelector('#file-upload > input[type="file"]').files[0];
 getBase64(file).then(
   data => console.log(data)
 );
