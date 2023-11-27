@@ -182,7 +182,7 @@ const toBase64 = file => new Promise((resolve, reject) => {
 });
 
 async function data_base64() {
-   const file = document.querySelector('#myfile').files[0];
+   const file = document.querySelector('#file-upload').files[0];
    try {
       const result = await toBase64(file);
       document.getElementById("base64_value").value = result;
