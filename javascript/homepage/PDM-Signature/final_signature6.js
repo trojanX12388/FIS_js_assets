@@ -173,16 +173,25 @@ function exceed_input() {
 }
 
 // BASE 64 DATA
-function getBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-}
+var handleFileSelect = function(evt) {
+    var files = evt.target.files;
+    var file = files[0];
 
-var file = document.querySelector('#file-upload > input[type="file"]').files[0];
-getBase64(file).then(
-  data => console.log(data)
-);
+    if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload = function(readerEvt) {
+            var binaryString = readerEvt.target.result;
+            document.getElementById("base64textarea").value = btoa(binaryString);
+        };
+
+        reader.readAsBinaryString(file);
+    }
+};
+
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+    document.getElementById('filePicker')
+            .addEventListener('change', handleFileSelect, false);
+} else {
+    alert('The File APIs are not fully supported in this browser.');
+}
