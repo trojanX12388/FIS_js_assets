@@ -144,8 +144,9 @@ function VerifyUploadSizeIsOK()
  {
     // alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
     fld.value = '';
-    valid_input()
+    invalid_input()
  }
+ valid_input()
  return true; 
 } // function VerifyUploadSizeIsOK()
 
