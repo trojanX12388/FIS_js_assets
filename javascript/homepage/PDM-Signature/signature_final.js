@@ -1,3 +1,4 @@
+// DRAW SIGNATURE
 const wrapper = document.getElementById("signature-pad");
 const clearButton = wrapper.querySelector("[data-action=clear]");
 const undoButton = wrapper.querySelector("[data-action=undo]");
@@ -113,3 +114,21 @@ saveJPGButton.addEventListener("click", () => {
     download(dataURL, "signature.jpg");
   }
 });
+
+
+// UPLOAD SIGNATURE
+function VerifyUploadSizeIsOK()
+{
+   /* Attached file size check. Will Bontrager Software LLC, https://www.willmaster.com */
+   var UploadFieldID = "file-upload";
+   var MaxSizeInBytes = 100000;
+   var fld = document.getElementById(UploadFieldID);
+   if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
+   {
+      alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024/1024) + "MB");
+      return false;
+   }
+   return true;
+} // function VerifyUploadSizeIsOK()
+
+
