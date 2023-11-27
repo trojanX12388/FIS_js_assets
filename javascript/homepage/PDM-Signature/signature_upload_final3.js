@@ -128,7 +128,7 @@ file_upload_signature.onchange = function(e) {
       valid_input()
       break;
     default:
-      alert('Invalid File Type!');
+      invalid_input()
       this.value = '';
   }
 };
@@ -150,8 +150,22 @@ function VerifyUploadSizeIsOK()
 } // function VerifyUploadSizeIsOK()
 
 
-// SHOW FILE SIZE 
-function valid_input()
-{
- document.getElementById("is_valid").disabled = true;
-} 
+// SHOW VALID
+function valid_input() {
+  var x = document.getElementById("is_valid");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+// SHOW INVALID
+function invalid_input() {
+  var x = document.getElementById("is_ivalid");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
