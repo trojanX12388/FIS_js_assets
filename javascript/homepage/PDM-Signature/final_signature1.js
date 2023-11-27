@@ -171,3 +171,11 @@ function exceed_input() {
     invalid.style.display = "none";
     valid.style.display = "none";
 }
+
+async function Main() {
+          const file = document.querySelector('#file-upload').files[0];
+          console.log(await toBase64(file));
+          value = await toBase64(file);
+          document.getElementById("base64_value").setAttribute('value',value);
+          }
+Main();
