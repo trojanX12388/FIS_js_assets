@@ -134,14 +134,14 @@ file_upload_signature.onchange = function(e) {
 // UPLOAD SIGNATURE
 function VerifyUploadSizeIsOK()
 {
- /* Attached file size check. Will Bontrager Software LLC, https://www.willmaster.com */
+ /* Attached file size check. */
  var UploadFieldID = "file-upload";
  var MaxSizeInBytes = 102400;
  var fld = document.getElementById(UploadFieldID);
  if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
  {
     alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
-    this.value = '';
+    fld.value = '';
  }
  return true; 
 } // function VerifyUploadSizeIsOK()
