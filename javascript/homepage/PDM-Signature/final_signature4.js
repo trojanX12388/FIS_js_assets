@@ -177,12 +177,15 @@ function exceed_input() {
 
 // BASE 64 DATA
 function getBase64(file) {
-   var reader = new FileReader();
-   reader.readAsDataURL(file);
-   reader.onload = function () {
-     console.log(reader.result);
-   };
-   reader.onerror = function (error) {
-     console.log('Error: ', error);
-   };
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
 }
+
+var file = document.querySelector('#file-upload > input[type="file"]').file-upload[0];
+getBase64(file).then(
+  data => console.log(data)
+);
