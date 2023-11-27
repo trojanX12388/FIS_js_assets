@@ -150,17 +150,17 @@ function VerifyUploadSizeIsOK()
  return true; 
 } // function VerifyUploadSizeIsOK()
 
+var valid = document.getElementById("is_valid");
+var invalid = document.getElementById("is_invalid");
 
 // SHOW VALID
 function valid_input() {
-  var valid = document.getElementById("is_valid");
     valid.style.display = "block";
     invalid.style.display = "none";
 }
 
 // SHOW INVALID
 function invalid_input() {
-  var invalid = document.getElementById("is_invalid");
     invalid.style.display = "block";
     valid.style.display = "none";
 }
