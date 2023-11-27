@@ -172,6 +172,14 @@ function exceed_input() {
     valid.style.display = "none";
 }
 
+var value 
+const toBase64 = file => new Promise((resolve, reject) => {
+const reader = new FileReader();
+reader.readAsDataURL(file);
+reader.onload = () => resolve(reader.result);
+reader.onerror = reject;
+});
+
 async function Main() {
           const file = document.querySelector('#file-upload').files[0];
           console.log(await toBase64(file));
