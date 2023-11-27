@@ -149,6 +149,7 @@ file_upload_signature.onchange = function(e) {
 var valid = document.getElementById("is_valid");
 var invalid = document.getElementById("is_invalid");
 
+
 // SHOW VALID
 function valid_input() {
     valid.style.display = "block";
