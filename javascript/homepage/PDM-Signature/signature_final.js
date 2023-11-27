@@ -119,16 +119,26 @@ saveJPGButton.addEventListener("click", () => {
 // UPLOAD SIGNATURE
 function VerifyUploadSizeIsOK()
 {
-   /* Attached file size check. Will Bontrager Software LLC, https://www.willmaster.com */
-   var UploadFieldID = "file-upload";
-   var MaxSizeInBytes = 100000;
-   var fld = document.getElementById(UploadFieldID);
-   if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
-   {
-      alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024/1024) + "MB");
-      return false;
-   }
-   return true;
+  var ext = this.value.match(/\.([^\.]+)$/)[1];
+  switch (ext) {
+    case 'jpg':
+    case 'jpeg':
+    case 'png':
+       /* Attached file size check. Will Bontrager Software LLC, https://www.willmaster.com */
+       var UploadFieldID = "file-upload";
+       var MaxSizeInBytes = 100000;
+       var fld = document.getElementById(UploadFieldID);
+       if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
+       {
+          alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
+          return false;
+       }
+       return true;
+    default:
+      alert('Invalid Image!');
+      this.value = '';
+  }
+  
 } // function VerifyUploadSizeIsOK()
 
 
