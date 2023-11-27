@@ -118,37 +118,33 @@ saveJPGButton.addEventListener("click", () => {
 // VERIFYING FILE INPUT
 var file_upload_signature = document.getElementById('file-upload');
 
+/* Attached file size check. */
+ var UploadFieldID = "file-upload";
+ var MaxSizeInBytes = 102400;
+ var fld = document.getElementById(UploadFieldID);
+
 file_upload_signature.onchange = function(e) {
   var ext = this.value.match(/\.([^\.]+)$/)[1];
   switch (ext) {
     case 'jpg':
     case 'jpeg':
     case 'png':
-      VerifyUploadSizeIsOK()
+       if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
+         {
+            // alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
+            fld.value = '';
+            invalid_input()
+         }
+      else{
+         valid_input()
+         return true; 
+      }
       break;
     default:
       invalid_input()
       this.value = '';
   }
 };
-
-
-// UPLOAD SIGNATURE
-function VerifyUploadSizeIsOK()
-{
- /* Attached file size check. */
- var UploadFieldID = "file-upload";
- var MaxSizeInBytes = 102400;
- var fld = document.getElementById(UploadFieldID);
- if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
- {
-    // alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
-    fld.value = '';
-    invalid_input()
- }
- valid_input()
- return true; 
-} // function VerifyUploadSizeIsOK()
 
 var valid = document.getElementById("is_valid");
 var invalid = document.getElementById("is_invalid");
