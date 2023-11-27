@@ -141,7 +141,7 @@ function VerifyUploadSizeIsOK()
  if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
  {
     alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
-    return false;
+    this.value = '';
  }
  return true; 
 } // function VerifyUploadSizeIsOK()
