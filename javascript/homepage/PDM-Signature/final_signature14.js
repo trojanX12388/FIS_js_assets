@@ -199,10 +199,10 @@ async function data_base64() {
 // VERIFYING FILE INPUT
 var file_upload_dict = document.getElementById('dict_certificate');
 file_upload_dict.onchange = function(e) {
-  data_base64()
+  dict_base64()
 };
 
-async function data_base64() {
+async function dict_base64() {
    const file = document.querySelector('#dict_certificate').files[0];
    try {
       const result = await toBase64(file);
