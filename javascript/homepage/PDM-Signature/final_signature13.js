@@ -116,6 +116,100 @@ saveJPGButton.addEventListener("click", () => {
 });
 
 
+// VERIFYING FILE INPUT
+var file_upload_signature = document.getElementById('file-upload');
+
+/* Attached file size check. */
+ var UploadFieldID = "file-upload";
+ var MaxSizeInBytes = 102400;
+ var fld = document.getElementById(UploadFieldID);
+
+file_upload_signature.onchange = function(e) {
+  var ext = this.value.match(/\.([^\.]+)$/)[1];
+  switch (ext) {
+    case 'jpg':
+    case 'jpeg':
+    case 'png':
+       if( fld.files && fld.files.length == 1 && fld.files[0].size > MaxSizeInBytes )
+         {
+            // alert("The file size must be no more than " + parseInt(MaxSizeInBytes/1024) + "KB");
+            fld.value = '';
+            exceed_input()
+         }
+      else{
+         valid_input()
+         data_base64()
+         return true; 
+      }
+      break;
+    default:
+      invalid_input()
+      this.value = '';
+  }
+};
+
+var valid = document.getElementById("is_valid");
+var invalid = document.getElementById("is_invalid");
+var exceed = document.getElementById("size_exceed");
+
+// SHOW VALID
+function valid_input() {
+    valid.style.display = "block";
+    invalid.style.display = "none";
+    exceed.style.display = "none";
+}
+
+// SHOW INVALID
+function invalid_input() {
+    invalid.style.display = "block";
+    valid.style.display = "none";
+    exceed.style.display = "none";
+}
 
 
+// SHOW EXCEED
+function exceed_input() {
+    exceed.style.display = "block";
+    invalid.style.display = "none";
+    valid.style.display = "none";
+}
 
+// BASE 64 DATA
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+});
+
+async function data_base64() {
+   const file = document.querySelector('#file-upload').files[0];
+   try {
+      const result = await toBase64(file);
+      document.getElementById("base64_value").value = result;
+   } catch(error) {
+      console.error(error);
+      return;
+   }
+   //...
+}
+
+// DICT CERTIFICATE UPLOAD
+
+// VERIFYING FILE INPUT
+var file_upload_dict = document.getElementById('dict_certificate');
+file_upload_dict.onchange = function(e) {
+  data_base64()
+};
+
+async function data_base64() {
+   const file = document.querySelector('#dict_certificate').files[0];
+   try {
+      const result = await toBase64(file);
+      document.getElementById("base64_dict_value").value = result;
+   } catch(error) {
+      console.error(error);
+      return;
+   }
+   //...
+}
